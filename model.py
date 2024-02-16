@@ -44,17 +44,19 @@ class inpaintingModel:
       else:
       return conv
 
-  def __UpConvBlock(self, filters, up_filters, kernel_size, up_kernel, up_stride, activation, padding, connecting_layer, shared_layer):
-    conv = keras.layers.Conv2D(filters=filters, kernel_size=kernel_size, activation=activation, padding=padding)(connecting_layer)
-    conv = keras.layers.Conv2D(filters=filters, kernel_size=kernel_size, activation=activation, padding=padding)(conv)
-    up = keras.layers.Conv2DTranspose(filters=up_filters, kernel_size=up_kernel, strides=up_stride, padding=padding)(conv)
-    up = keras.layers.concatenate([up, shared_layer], axis=3)
+   def __UpConvBlock(self, filters, up_filters, kernel_size, up_kernel, up_stride, activation, padding, connecting_layer, shared_layer, l1_reg=0.001, l2_reg=0.001):
+    
+      conv = keras.layers.Conv2D(filters=filters, kernel_size=kernel_size, activation=activation, padding=padding, kernel_regularizer=tf.keras.regularizers.l2(l2_reg), bias_regularizer=tf.keras.regularizers.l1(l1_reg))(connecting_layer)
+      conv = keras.layers.Conv2D(filters=filters, kernel_size=kernel_size, activation=activation, padding=padding, kernel_regularizer=tf.keras.regularizers.l2(l2_reg), bias_regularizer=tf.keras.regularizers.l1(l1_reg))(conv)
+    
+      up = keras.layers.Conv2DTranspose(filters=up_filters, kernel_size=up_kernel, strides=up_stride, padding=padding)(conv)
+      up = keras.layers.concatenate([up, shared_layer], axis=3)
 
     return conv, up
 
-  def select_channel(self, x, n):
-    x = x[:, :, :, n]
-    x = Reshape((x.shape[1], x.shape[2], 1))(x)
+    def select_channel(self, x, n):
+        x = x[:, :, :, n]
+        x = Reshape((x.shape[1], x.shape[2], 1))(x)
     return x
 
 
