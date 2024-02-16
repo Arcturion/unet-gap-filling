@@ -71,7 +71,7 @@ def noising_min(image):
 
     return gap
 
-for x in range(5000):
+for x in range(3000):
   gap_index[:, :, :] = np.array([*map(noising_min, gap_index[:, :, :, :])])
 
 #Take the random pixel as other data
