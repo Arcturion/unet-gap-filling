@@ -34,12 +34,14 @@ class inpaintingModel:
     return keras.models.Model(inputs=[inputs], outputs=[outputs])
 
   def __ConvBlock(self, filters, kernel_size, pool_size, activation, padding, connecting_layer, pool_layer=True):
-    conv = keras.layers.Conv2D(filters=filters, kernel_size=kernel_size, activation=activation, padding=padding)(connecting_layer)
-    conv = keras.layers.Conv2D(filters=filters, kernel_size=kernel_size, activation=activation, padding=padding)(conv)
-    if pool_layer:
-      pool = keras.layers.MaxPooling2D(pool_size)(conv)
+      
+      conv = keras.layers.Conv2D(filters=filters, kernel_size=kernel_size, activation=activation, padding=padding, kernel_regularizer=tf.keras.regularizers.l2(l2_reg), bias_regularizer=tf.keras.regularizers.l1(l1_reg))(connecting_layer)
+      conv = keras.layers.Conv2D(filters=filters, kernel_size=kernel_size, activation=activation, padding=padding, kernel_regularizer=tf.keras.regularizers.l2(l2_reg), bias_regularizer=tf.keras.regularizers.l1(l1_reg))(conv)
+      
+      if pool_layer:
+          pool = keras.layers.MaxPooling2D(pool_size)(conv)
       return conv, pool
-    else:
+      else:
       return conv
 
   def __UpConvBlock(self, filters, up_filters, kernel_size, up_kernel, up_stride, activation, padding, connecting_layer, shared_layer):
