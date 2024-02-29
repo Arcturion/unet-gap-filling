@@ -19,4 +19,4 @@ The U-Net architecture is a convolutional neural network (CNN) commonly used for
 git clone https://github.com/your-username/your-repo.git
 ```
 
-2. Clone the repository and go to the demo directory, then follow instruction there:
+2. Go to the demo directory, then follow instructions there:
