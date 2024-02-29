@@ -16,7 +16,7 @@ The U-Net architecture is a convolutional neural network (CNN) commonly used for
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/your-repo.git](https://github.com/Arcturion/unet-gap-filling.git
+git clone https://github.com/Arcturion/unet-gap-filling.git
 ```
 
 2. Go to the demo directory, then follow instructions there:
