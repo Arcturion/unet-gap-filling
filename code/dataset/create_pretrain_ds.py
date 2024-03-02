@@ -9,6 +9,8 @@ from sklearn.utils import shuffle
 # --------------------------------------------
 
 
+random_number = 20
+
 def make_sequences(data_raw, look_back):
     sequences = [data_raw[index: index + look_back] for index in range(len(data_raw) - look_back)]
     sequences = np.array(sequences)
@@ -21,8 +23,8 @@ def load_and_process_data(file_path, sequence_length):
     sat_data_iden = load(file_path)
     #sat_data_iden = np.repeat(sat_data_iden, 34, axis=0)
 
-    sat_data_iden = shuffle(sat_data_iden, random_state=41)[:1128]
-    sat_data_iden, sat_data_iden_y = make_sequence(sat_data_iden, sequence_length)
+    sat_data_iden = shuffle(sat_data_iden, random_state=random_number)[:1128]
+    sat_data_iden, sat_data_iden_y = make_sequences(sat_data_iden, sequence_length)
     sat_data_iden = np.transpose(sat_data_iden, (0, 2, 3, 1))
 
     return sat_data_iden, sat_data_iden_y
@@ -39,12 +41,9 @@ print(sat_data_iden.shape, sat_data_iden_y.shape)
 
 
 
-
-
 # -------------------------------------------------
 # ------------ CREATE TRAINING DATA ---------------
 # -------------------------------------------------
-
 
 # Load data
 data = np.flip(load('/content/drive/MyDrive/RES_OCEANMOVE/L4_GHRSST/HIMA_SST_L4.npy'), axis=1)
@@ -53,8 +52,10 @@ data[np.isnan(data)] = 0
 # MinMax Scaler
 def min_max_scaler(data):
     masked_data = data[data > 0]
-    min_val = np.min(masked_data)
-    max_val = np.max(data)
+    #min_val = np.min(masked_data)
+    #max_val = np.max(data)
+    min_val = 5
+    max_val = 35
     data[data > 0] = (masked_data - min_val) / (max_val - min_val)
     return data
 
@@ -69,7 +70,7 @@ x_train = np.repeat(data_x, 3, axis=0)
 y_train = np.repeat(data_y, 3, axis=0)
 
 # Shuffle data
-x_train, y_train = shuffle(x_train, y_train, random_state=16)
+x_train, y_train = shuffle(x_train, y_train, random_state=random_number)
 
 # Artificial cloud
 x_train *= sat_data_iden
