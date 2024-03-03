@@ -1,13 +1,30 @@
-from tensorflow.keras.layers import Input, Conv2D, MaxPooling2D, UpSampling2D
-from tensorflow.keras.models import Model
 import tensorflow as tf
+from tensorflow.keras.layers import Input
+from tensorflow.keras.models import Model
 from tensorflow import keras
 import os
 
 keras.backend.clear_session()
 # load the pre-trained model
+wrapper_model = inpaintingModel().prepare_model()
+
+
+# create a new model based on the pre-trained model
+image_input = Input(shape=(256, 256, 3))
+
+# pass the image_input to the pre-trained model and get the first output
+outputs1 = wrapper_model(image_input)
+
+# add a zero to the begin and size arguments for tf.slice
+image_input2 = tf.slice(image_input, [0, 0, 0, 1], [-1, 256, 256, 2]) # shape (1, 256, 256, 2), remove the first channel
+arr = tf.concat([outputs1, image_input2], -1) # shape (1, 256, 256, 3), replace the first channel
+
+# pass the arr to the pre-trained model and get the second output
+outputs2 = wrapper_model(arr)
+
+# load the pre-trained model
 pretrained_model = Model(inputs=[image_input], outputs=[outputs2])
-pretrained_model.load_weights('/content/drive/MyDrive/INPAINTING/Double-Unet-weights.20-0.0093.hdf5')
+pretrained_model.load_weights('/content/drive/MyDrive/Double U-Net Start Over/weight/pre-trained-weight.keras')
 
 for layer in pretrained_model.layers[3:30]:
     layer.trainable = False
