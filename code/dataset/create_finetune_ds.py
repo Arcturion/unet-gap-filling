@@ -66,18 +66,24 @@ gap_index = np.concatenate((real_value, gap_index), axis=-1)
 
 #Take Random pixel
 
-def noising_min(image):
+def noising_min(image, num_pixels=5000):
+
     array = np.array(image[:,:,0])
     gap = np.array(image[:,:,1])
-    i = random.choice(range(0,256)) # x coordinate for the top left corner of the mask
-    j = random.choice(range(0,256)) # y coordinate for the top left corner of the mask
-    gap[i, j] = array[i, j]
-    array[i, j]=0.0 # setting the pixels in the masked region to -1
-    gap = np.concatenate((np.expand_dims(array, axis=-1), np.expand_dims(gap, axis=-1)), axis=-1)
 
+    # Select 5000 random indices for rows and columns
+    i = np.random.choice(256, size=num_pixels, replace=True)
+    j = np.random.choice(256, size=num_pixels, replace=True)
+
+    # Set the selected pixels to 1
+    gap[i, j] = array[i, j]
+    array[i, j]= 0.0 
+    
+    gap = np.concatenate((np.expand_dims(array, axis=-1), np.expand_dims(gap, axis=-1)), axis=-1)
+    
     return gap
 
-for x in range(3000):
+for x in range(1):
   gap_index[:, :, :] = np.array([*map(noising_min, gap_index[:, :, :, :])])
 
 #Take the random pixel as other data
