@@ -6,6 +6,8 @@ This repository contains code for performing gap filling in satellite imagery us
 
 The U-Net architecture is a convolutional neural network (CNN) commonly used for image segmentation tasks. In this project, we utilize it to fill gaps in satellite imagery caused by cloud cover or other factors.
 
+![Gap Filled SST](img/gapfilling2.png)
+
 ## Data
 
 - **Himawari (L4) Gap-Free Sea Surface Temperature Dataset**: Initially, the model is trained on a dataset with no gaps to learn features from clean imagery.
