@@ -10,3 +10,13 @@ The U-Net architecture is a convolutional neural network (CNN) commonly used for
 
 - **Himawari (L4) Gap-Free Sea Surface Temperature Dataset**: Initially, the model is trained on a dataset with no gaps to learn features from clean imagery.
 - **Gap Data**: After obtaining the pre-trained model, it is fine-tuned using data containing gaps to specifically address the task of filling missing regions in satellite images.
+
+## Usage
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/Arcturion/unet-gap-filling.git
+```
+
+2. Go to the demo directory, then follow instructions there:
