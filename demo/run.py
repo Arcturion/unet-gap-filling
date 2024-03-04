@@ -150,7 +150,7 @@ gap_mask_input = Input(shape=(256, 256, 1))
 outputs = pretrained_model(image_input)
 
 new_model = Model(inputs=[image_input, gap_mask_input], outputs=[outputs])
-new_model.load_weights('/content/drive/MyDrive/demo/fine-tuned.01-0.0299.keras')
+new_model.load_weights('fine-tuned.keras')
 
 #COMPILE
 opt = keras.optimizers.Adam(learning_rate=0.000001)
