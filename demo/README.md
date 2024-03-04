@@ -1,4 +1,4 @@
-# DEMO GUIDE
+# Demo Guide
 
 1. After clone the repository, please download the fine-tuned weight and sample data with gap below
 ```bash
