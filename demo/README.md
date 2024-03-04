@@ -9,3 +9,4 @@ https://drive.google.com/file/d/1xOC29wmvHBkKVAug1MNiZIFW2oWidoSa/view?usp=shari
 ```
 
 2. Open the run.py and make sure the path of the dataset already set
+3. Run, and wait for the magic happend.
