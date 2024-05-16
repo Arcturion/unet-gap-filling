@@ -1,7 +1,7 @@
 # U-Net Gap Filling for Satellite Imagery
 
-This repository contains code for performing gap filling in satellite imagery using the U-Net architecture. The model is initially trained on a Himawari (L4) gap-free Sea Surface Temperature dataset and then fine-tuned using Himawari Sea Surface Temperature L3 data containing gaps.
-This repository contains code implementation for the paper titled, "Leveraging Transfer Learning and U-Nets Method for Improved Gap Filling in Himawari Sea Surface Temperature Data Adjacent to Taiwan", published as a research article in the MDPI ISPRS International Journal of Geo-Information.
+This repository contains code implementation for the paper titled, "Leveraging Transfer Learning and U-Nets Method for Improved Gap Filling in Himawari Sea Surface Temperature Data Adjacent to Taiwan", published as a research article in the MDPI ISPRS International Journal of Geo-Information. The model is initially trained on a Himawari (L4) gap-free Sea Surface Temperature dataset and then fine-tuned using Himawari Sea Surface Temperature L3 data containing gaps.<br>
+
 The paper can be found at this [link](https://www.mdpi.com/2220-9964/13/5/162).<br>
 
 See the websites of our [Ocean Remote Sensing Lab]([https://quantum.polimi.it/](https://sites.google.com/view/hsupochun/ocean-lab?authuser=0))
