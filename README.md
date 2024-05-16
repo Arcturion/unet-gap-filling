@@ -26,7 +26,7 @@ git clone https://github.com/Arcturion/unet-gap-filling.git
 
 ## Citation
 
-If you use this project or find it helpful, please cite it using the following DOI and citation format:
-
-- **DOI:** [10.3390/ijgi13050162](https://doi.org/10.3390/ijgi13050162)
-- **Citation:** Putra DP, Hsu P-C. Leveraging Transfer Learning and U-Nets Method for Improved Gap Filling in Himawari Sea Surface Temperature Data Adjacent to Taiwan. ISPRS International Journal of Geo-Information. 2024; 13(5):162. https://doi.org/10.3390/ijgi13050162
+If you use this project or find it helpful, please cite it:
+```bash
+Putra DP, Hsu P-C. Leveraging Transfer Learning and U-Nets Method for Improved Gap Filling in Himawari Sea Surface Temperature Data Adjacent to Taiwan. ISPRS International Journal of Geo-Information. 2024; 13(5):162. https://doi.org/10.3390/ijgi13050162
+```
