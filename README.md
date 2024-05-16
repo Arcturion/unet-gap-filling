@@ -32,7 +32,7 @@ git clone https://github.com/Arcturion/unet-gap-filling.git
 
 ## Citation
 
-If you find this code helpful for your research, please consider citing our paper
+If you find this code helpful for your research, please consider citing our paper:<br>
 **BibTex:**
 ~~~LaTeX
 @Article{ijgi13050162,
