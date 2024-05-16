@@ -4,7 +4,7 @@ This repository contains code implementation for the paper titled, "Leveraging T
 
 The paper can be found at this [link](https://www.mdpi.com/2220-9964/13/5/162).<br>
 
-See the websites of our [Ocean Remote Sensing Lab]([https://quantum.polimi.it/](https://sites.google.com/view/hsupochun/ocean-lab?authuser=0))
+See the websites of our [Ocean Remote Sensing Lab](https://sites.google.com/view/hsupochun/ocean-lab?authuser=0)
 
 
 
